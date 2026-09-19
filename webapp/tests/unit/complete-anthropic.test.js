@@ -2,8 +2,8 @@
  * @name            jPulse Framework / Plugins / AI Anthropic / Tests / Unit / Complete
  * @tagline         Fake-fetch completions against the published event contract
  * @file            plugins/ai-anthropic/webapp/tests/unit/complete-anthropic.test.js
- * @version         1.0.0
- * @release         2026-09-17
+ * @version         1.0.1
+ * @release         2026-09-19
  * @repository      https://github.com/jpulse-net/plugin-ai-anthropic
  * @author          Peter Thoeny, https://twiki.org & https://github.com/peterthoeny/
  * @copyright       2026 Peter Thoeny, https://twiki.org & https://github.com/peterthoeny/
@@ -32,6 +32,16 @@ function collect(context, deps) {
     const events = [];
     context.emit = (event) => events.push(event);
     return completeAnthropic(context, deps).then(() => events);
+}
+
+function fetchFailed(code) {
+    return async function fetchFn() {
+        const err = new TypeError('fetch failed');
+        if (code) {
+            err.cause = { code };
+        }
+        throw err;
+    };
 }
 
 const storedKey = async () => 'sk-ant-testkey';
@@ -128,6 +138,51 @@ describe('completeAnthropic', () => {
             id: 'bad',
             name: 'get_title',
             jsonLen: 5
+        }]);
+    });
+
+    test('fetch failed with ECONNRESET is retryable and names the code', async () => {
+        const events = await collect({
+            messages: [{ role: 'user', content: 'Hi' }]
+        }, {
+            getSecret: storedKey,
+            getConfig: emptyConfig,
+            fetch: fetchFailed('ECONNRESET')
+        });
+        expect(events).toEqual([{
+            type: 'error',
+            code: 'AI_PROVIDER_ERROR',
+            message: 'fetch failed (ECONNRESET)',
+            retryable: true
+        }]);
+    });
+
+    test('ENOTFOUND and a TLS failure stay retryable false', async () => {
+        const notFound = await collect({
+            messages: [{ role: 'user', content: 'Hi' }]
+        }, {
+            getSecret: storedKey,
+            getConfig: emptyConfig,
+            fetch: fetchFailed('ENOTFOUND')
+        });
+        expect(notFound).toEqual([{
+            type: 'error',
+            code: 'AI_PROVIDER_ERROR',
+            message: 'fetch failed (ENOTFOUND)',
+            retryable: false
+        }]);
+        const tls = await collect({
+            messages: [{ role: 'user', content: 'Hi' }]
+        }, {
+            getSecret: storedKey,
+            getConfig: emptyConfig,
+            fetch: fetchFailed('UNABLE_TO_VERIFY_LEAF_SIGNATURE')
+        });
+        expect(tls).toEqual([{
+            type: 'error',
+            code: 'AI_PROVIDER_ERROR',
+            message: 'fetch failed (UNABLE_TO_VERIFY_LEAF_SIGNATURE)',
+            retryable: false
         }]);
     });
 

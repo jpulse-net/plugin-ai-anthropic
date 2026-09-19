@@ -1,4 +1,4 @@
-# jPulse Docs / Installed Plugins / Anthropic AI Provider Plugin v1.0.0
+# jPulse Docs / Installed Plugins / Anthropic AI Provider Plugin v1.0.1
 
 The Anthropic plugin is a Claude backend for the site AI agent. It does not add a panel of its own. Enable it, save an API key, then set **Site Configuration → AI** to Anthropic (default provider / model, or the allowed list).
 
@@ -66,4 +66,8 @@ Invalid JSON is ignored and the built-in table stays in effect.
 - **JavaScript**: `webapp/controller/aiAnthropic.js` — `onAiProviderRegister` / `onAiComplete`; `webapp/view/jpulse-common.js` — Verify button (`jPulse.plugins.aiAnthropic.verifyApiKey`).
 - **Hooks**: `onAiProviderRegister` (continue) and `onAiComplete` (abort), defined by `ai-core`. This plugin only handles them. It does not import from `plugins/ai-core/`.
 - **Depends on**: `ai-core` (`@jpulse-net/plugin-ai-core` >= 1.0.0). jPulse >= 2.0.2.
-- **1.0.0**: first release against the published provider contract (array `tool_use`, four-way usage, $/MTok prices).
+
+## Plugin releases
+
+- **1.0.1**, W-236, 2026-09-19: Transient network failures (`ECONNRESET`, `ECONNREFUSED`, `ETIMEDOUT`, `EPIPE`, `EAI_AGAIN`, `UND_ERR_SOCKET`, `UND_ERR_CONNECT_TIMEOUT`) emit `retryable: true` so the turn loop retries. The cause code rides the message (`fetch failed (ECONNRESET)`). `ENOTFOUND` and TLS / certificate failures stay fatal.
+- **1.0.0**, W-224, 2026-09-17: First release: published `ai-core` 1.0.0 contract (array `tool_use`, four-way usage, $/MTok price table), password key, unsaved Verify, Pricing tab override.

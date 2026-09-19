@@ -1,4 +1,4 @@
-# jPulse Framework / Plugins / Anthropic AI Provider Plugin v1.0.0
+# jPulse Framework / Plugins / Anthropic AI Provider Plugin v1.0.1
 
 Claude provider for `ai-core`. Streams Messages API completions into the turn loop, accounts for input / output / cache tokens in $/MTok, and stores the API key as a password field that Verify never returns to the browser.
 
@@ -38,6 +38,7 @@ npm test
 
 Or the same `npx jest plugins/ai-anthropic/webapp/tests/unit --runInBand` from here or from the **framework repo root**. A bare `npx jest` against these files without that config treats them as CommonJS and fails on `import`.
 
-## 1.0.0
+## Plugin releases
 
-First release: published `ai-core` 1.0.0 contract (array `tool_use`, four-way usage, $/MTok price table), password key, unsaved Verify, Pricing tab override.
+- **1.0.1**, W-236, 2026-09-19: Transient network failures (`ECONNRESET`, `ECONNREFUSED`, `ETIMEDOUT`, `EPIPE`, `EAI_AGAIN`, `UND_ERR_SOCKET`, `UND_ERR_CONNECT_TIMEOUT`) emit `retryable: true` so the turn loop retries. The cause code rides the message (`fetch failed (ECONNRESET)`). `ENOTFOUND` and TLS / certificate failures stay fatal.
+- **1.0.0**, W-224, 2026-09-17: First release: published `ai-core` 1.0.0 contract (array `tool_use`, four-way usage, $/MTok price table), password key, unsaved Verify, Pricing tab override.

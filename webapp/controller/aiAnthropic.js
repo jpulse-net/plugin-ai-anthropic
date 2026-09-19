@@ -4,8 +4,8 @@
  * @description     Streams Messages API events into the published ai-core
  *                  contract: array tool_use, four-way usage, $/MTok prices
  * @file            plugins/ai-anthropic/webapp/controller/aiAnthropic.js
- * @version         1.0.0
- * @release         2026-09-17
+ * @version         1.0.1
+ * @release         2026-09-19
  * @repository      https://github.com/jpulse-net/plugin-ai-anthropic
  * @author          Peter Thoeny, https://twiki.org & https://github.com/peterthoeny/
  * @copyright       2026 Peter Thoeny, https://twiki.org & https://github.com/peterthoeny/
@@ -198,6 +198,24 @@ export function mapStopReason(reason) {
 
 export function sanitizeError(text) {
     return String(text || 'Anthropic request failed').replace(/sk-ant-[A-Za-z0-9_-]+/g, 'sk-ant-…');
+}
+
+const RETRYABLE_CAUSE_CODES = new Set([
+    'ECONNRESET',
+    'ECONNREFUSED',
+    'ETIMEDOUT',
+    'EPIPE',
+    'EAI_AGAIN',
+    'UND_ERR_SOCKET',
+    'UND_ERR_CONNECT_TIMEOUT'
+]);
+
+function causeCode(error) {
+    const cause = error && error.cause;
+    if (!cause || typeof cause !== 'object') {
+        return '';
+    }
+    return typeof cause.code === 'string' ? cause.code : '';
 }
 
 export function consumeSse(buffer) {
@@ -552,11 +570,15 @@ export async function completeAnthropic(context, deps) {
             });
             return context;
         }
+        const code = causeCode(error);
+        const message = sanitizeError(
+            code ? ('fetch failed (' + code + ')') : (error && error.message)
+        );
         emit({
             type: 'error',
             code: 'AI_PROVIDER_ERROR',
-            message: sanitizeError(error && error.message),
-            retryable: false
+            message,
+            retryable: RETRYABLE_CAUSE_CODES.has(code)
         });
         return context;
     } finally {

@@ -4,8 +4,8 @@
  * @description     Plugin-config Verify callback. POSTs the form field
  *                  (and endpoint); the response never includes the key.
  * @file            plugins/ai-anthropic/webapp/view/jpulse-common.js
- * @version         1.0.0
- * @release         2026-09-17
+ * @version         1.0.1
+ * @release         2026-09-19
  * @repository      https://github.com/jpulse-net/plugin-ai-anthropic
  * @author          Peter Thoeny, https://twiki.org & https://github.com/peterthoeny/
  * @copyright       2026 Peter Thoeny, https://twiki.org & https://github.com/peterthoeny/
