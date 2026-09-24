@@ -1,4 +1,4 @@
-# jPulse Docs / Installed Plugins / Anthropic AI Provider Plugin v1.0.1
+# jPulse Docs / Installed Plugins / Anthropic AI Provider Plugin v1.0.2
 
 The Anthropic plugin is a Claude backend for the site AI agent. It does not add a panel of its own. Enable it, save an API key, then set **Site Configuration → AI** to Anthropic (default provider / model, or the allowed list).
 

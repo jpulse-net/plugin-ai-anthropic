@@ -1,4 +1,4 @@
-# jPulse Framework / Plugins / Anthropic AI Provider Plugin v1.0.1
+# jPulse Framework / Plugins / Anthropic AI Provider Plugin v1.0.2
 
 Claude provider for `ai-core`. Streams Messages API completions into the turn loop, accounts for input / output / cache tokens in $/MTok, and stores the API key as a password field that Verify never returns to the browser.
 

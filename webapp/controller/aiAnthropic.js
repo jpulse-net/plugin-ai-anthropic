@@ -4,8 +4,8 @@
  * @description     Streams Messages API events into the published ai-core
  *                  contract: array tool_use, four-way usage, $/MTok prices
  * @file            plugins/ai-anthropic/webapp/controller/aiAnthropic.js
- * @version         1.0.1
- * @release         2026-09-19
+ * @version         1.0.2
+ * @release         2026-09-24
  * @repository      https://github.com/jpulse-net/plugin-ai-anthropic
  * @author          Peter Thoeny, https://twiki.org & https://github.com/peterthoeny/
  * @copyright       2026 Peter Thoeny, https://twiki.org & https://github.com/peterthoeny/

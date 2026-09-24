@@ -1,6 +1,6 @@
 {
     "name": "@jpulse-net/plugin-ai-anthropic",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "type": "module",
     "description": "Anthropic Claude provider plugin for the jPulse AI agent",
     "keywords": ["jpulse", "jpulse-plugin", "ai", "anthropic", "claude"],

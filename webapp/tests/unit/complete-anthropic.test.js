@@ -2,8 +2,8 @@
  * @name            jPulse Framework / Plugins / AI Anthropic / Tests / Unit / Complete
  * @tagline         Fake-fetch completions against the published event contract
  * @file            plugins/ai-anthropic/webapp/tests/unit/complete-anthropic.test.js
- * @version         1.0.1
- * @release         2026-09-19
+ * @version         1.0.2
+ * @release         2026-09-24
  * @repository      https://github.com/jpulse-net/plugin-ai-anthropic
  * @author          Peter Thoeny, https://twiki.org & https://github.com/peterthoeny/
  * @copyright       2026 Peter Thoeny, https://twiki.org & https://github.com/peterthoeny/
