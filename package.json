@@ -3,12 +3,18 @@
     "version": "1.0.2",
     "type": "module",
     "description": "Anthropic Claude provider plugin for the jPulse AI agent",
-    "keywords": ["jpulse", "jpulse-plugin", "ai", "anthropic", "claude"],
+    "keywords": [
+        "jpulse",
+        "jpulse-plugin",
+        "ai",
+        "anthropic",
+        "claude"
+    ],
     "author": "jPulse Team <team@jpulse.net>",
     "license": "BSL-1.1",
     "repository": {
         "type": "git",
-        "url": "https://github.com/jpulse-net/plugin-ai-anthropic.git"
+        "url": "git+https://github.com/jpulse-net/plugin-ai-anthropic.git"
     },
     "publishConfig": {
         "registry": "https://npm.pkg.github.com",
