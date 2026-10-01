@@ -1,8 +1,8 @@
 {
     "name": "ai-anthropic",
     "npmPackage": "@jpulse-net/plugin-ai-anthropic",
-    "version": "1.0.2",
-    "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M8.7 5.2 4.4 19\"/><path d=\"M9.9 5.2 14.5 19\"/><path d=\"M7 15H12.2\"/><path d=\"M15 5 19.4 19\"/></svg>",
+    "version": "1.0.3",
+    "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 12 13.8 3\"/><path d=\"M12 12 18.6 5.2\"/><path d=\"M12 12 21 10.7\"/><path d=\"M12 12 20.9 14.1\"/><path d=\"M12 12 19.3 18.2\"/><path d=\"M12 12 16.8 19.6\"/><path d=\"M12 12 11.6 21\"/><path d=\"M12 12 7.2 20\"/><path d=\"M12 12 4.9 16.9\"/><path d=\"M12 12 3 12\"/><path d=\"M12 12 4.5 6.7\"/><path d=\"M12 12 7.8 3\"/></svg>",
     "summary": "Anthropic Claude provider for the jPulse AI agent",
     "description": "<p>Streams Claude completions into the <code>ai-core</code> turn loop. The API key is <code>type: \"password\"</code>: bulk reads return <code>********</code>, completions use <code>PluginModel.getSecret</code>, and Verify pings <code>/v1/models</code> without returning the key.</p>",
     "author": "jPulse Team <team@jpulse.net>",

@@ -2,8 +2,8 @@
  * @name            jPulse Framework / Plugins / AI Anthropic / Tests / Unit / Helpers
  * @tagline         SSE parser, usage map, stop reason, sanitize, verify, prices
  * @file            plugins/ai-anthropic/webapp/tests/unit/helpers.test.js
- * @version         1.0.2
- * @release         2026-09-24
+ * @version         1.0.3
+ * @release         2026-10-01
  * @repository      https://github.com/jpulse-net/plugin-ai-anthropic
  * @author          Peter Thoeny, https://twiki.org & https://github.com/peterthoeny/
  * @copyright       2026 Peter Thoeny, https://twiki.org & https://github.com/peterthoeny/

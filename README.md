@@ -1,4 +1,4 @@
-# jPulse Framework / Plugins / Anthropic AI Provider Plugin v1.0.2
+# jPulse Framework / Plugins / Anthropic AI Provider Plugin v1.0.3
 
 Claude provider for `ai-core`. Streams Messages API completions into the turn loop, accounts for input / output / cache tokens in $/MTok, and stores the API key as a password field that Verify never returns to the browser.
 
@@ -40,5 +40,6 @@ Or the same `npx jest plugins/ai-anthropic/webapp/tests/unit --runInBand` from h
 
 ## Plugin releases
 
+- **1.0.3**, 2026-10-01: Plugin icon is the Claude star (twelve round strokes, width 1.5) in place of the lettermark.
 - **1.0.1**, W-236, 2026-09-19: Transient network failures (`ECONNRESET`, `ECONNREFUSED`, `ETIMEDOUT`, `EPIPE`, `EAI_AGAIN`, `UND_ERR_SOCKET`, `UND_ERR_CONNECT_TIMEOUT`) emit `retryable: true` so the turn loop retries. The cause code rides the message (`fetch failed (ECONNRESET)`). `ENOTFOUND` and TLS / certificate failures stay fatal.
 - **1.0.0**, W-224, 2026-09-17: First release: published `ai-core` 1.0.0 contract (array `tool_use`, four-way usage, $/MTok price table), password key, unsaved Verify, Pricing tab override.
